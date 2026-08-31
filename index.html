@@ -3,472 +3,966 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ماركتينج بروكرس | حلول برمجية وتطوير التطبيقات</title>
+  <title>ماركتينج بروكرس | هندسة وتطوير تطبيقات الجوال والمنصات السحابية</title>
+  <meta name="description" content="شركة متخصصة في برمجة وتطوير تطبيقات الهواتف الذكية (iOS & Android)، والمواقع الإلكترونية، والأنظمة السحابية بأعلى معايير الجودة والأداء.">
   
   <!-- كود إثبات الملكية لـ Google Search Console -->
   <meta name="google-site-verification" content="mF_1oMmJMzJ78i9Q7QoEIyVD6zs-tdCp2ng50gHIxBI" />
 
+  <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <style>
     :root {
-      --bg-dark: #090d16;
-      --card-bg: rgba(18, 24, 38, 0.7);
+      --bg-main: #06090f;
+      --bg-surface: #0c121e;
+      --card-bg: rgba(15, 23, 42, 0.65);
       --card-border: rgba(255, 255, 255, 0.08);
       --accent: #ff6b00;
-      --accent-glow: rgba(255, 107, 0, 0.25);
+      --accent-hover: #ff8533;
+      --accent-glow: rgba(255, 107, 0, 0.35);
+      --cyan-accent: #00f2fe;
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
+      --radius-lg: 20px;
+      --radius-md: 12px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Tajawal', sans-serif;
-      background-color: var(--bg-dark);
+      background-color: var(--bg-main);
       color: var(--text-main);
       overflow-x: hidden;
       line-height: 1.6;
     }
 
-    /* Header & Nav */
+    /* Ambient Background Gradients */
+    .glow-bg {
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(255,107,0,0.18) 0%, rgba(0,242,254,0.06) 40%, transparent 70%);
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Header & Navigation */
     header {
       position: fixed;
       top: 0; width: 100%;
-      backdrop-filter: blur(16px);
-      background: rgba(9, 13, 22, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(6, 9, 15, 0.8);
       border-bottom: 1px solid var(--card-border);
-      z-index: 100;
+      z-index: 1000;
     }
     .nav-container {
-      max-width: 1200px;
+      max-width: 1280px;
       margin: 0 auto;
-      padding: 16px 24px;
+      padding: 18px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
     .brand {
-      font-size: 20px;
-      font-weight: 800;
+      font-size: 22px;
+      font-weight: 900;
       color: #fff;
+      text-decoration: none;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
+    }
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
     }
     .brand span { color: var(--accent); }
+    
+    .nav-links {
+      display: flex;
+      gap: 30px;
+    }
     .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      margin-right: 24px;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 600;
-      transition: color 0.2s;
+      transition: color 0.25s;
     }
     .nav-links a:hover { color: var(--accent); }
-    .btn-action {
-      background: var(--accent);
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #e05600 100%);
       color: #fff;
-      padding: 8px 18px;
-      border-radius: 8px;
+      padding: 10px 22px;
+      border-radius: 10px;
       text-decoration: none;
       font-weight: 700;
-      font-size: 13px;
-      box-shadow: 0 4px 14px var(--accent-glow);
+      font-size: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 20px var(--accent-glow);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(255, 107, 0, 0.5);
+    }
+    .btn-outline {
+      border: 1px solid var(--card-border);
+      background: rgba(255,255,255,0.03);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn-outline:hover {
+      border-color: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.08);
     }
 
     /* Hero Section */
     .hero {
-      padding: 150px 24px 70px;
+      position: relative;
+      padding: 170px 24px 80px;
       text-align: center;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
+      z-index: 1;
     }
-    .hero-badge {
-      display: inline-block;
-      padding: 6px 16px;
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 18px;
       background: rgba(255, 107, 0, 0.1);
-      border: 1px solid rgba(255, 107, 0, 0.3);
+      border: 1px solid rgba(255, 107, 0, 0.35);
       border-radius: 30px;
       color: var(--accent);
       font-size: 13px;
       font-weight: 700;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
     }
     .hero h1 {
-      font-size: 42px;
+      font-size: 52px;
       font-weight: 900;
-      line-height: 1.3;
-      margin-bottom: 18px;
-      background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
+      line-height: 1.25;
+      margin-bottom: 22px;
+      letter-spacing: -0.5px;
+    }
+    .hero h1 .text-gradient {
+      background: linear-gradient(135deg, #ffffff 30%, #ff8533 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .hero p {
-      font-size: 17px;
+      font-size: 18px;
       color: var(--text-muted);
-      max-width: 720px;
-      margin: 0 auto 30px;
+      max-width: 780px;
+      margin: 0 auto 36px;
+      line-height: 1.8;
     }
-
-    /* Metrics */
-    .metrics {
+    .hero-buttons {
       display: flex;
       justify-content: center;
-      gap: 40px;
-      margin-top: 30px;
+      gap: 16px;
       flex-wrap: wrap;
-    }
-    .metric-item h3 {
-      font-size: 28px;
-      font-weight: 800;
-      color: var(--accent);
-    }
-    .metric-item p {
-      font-size: 13px;
-      color: var(--text-muted);
+      margin-bottom: 50px;
     }
 
-    /* Slider Container */
-    .slider-section {
-      max-width: 1100px;
-      margin: 40px auto 80px;
-      padding: 0 20px;
+    /* Tech Marquee */
+    .tech-bar {
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+      background: rgba(12, 18, 30, 0.5);
+      padding: 18px 0;
+      margin-bottom: 70px;
+      overflow: hidden;
       position: relative;
     }
-    .section-title {
-      text-align: center;
-      margin-bottom: 36px;
+    .tech-track {
+      display: flex;
+      gap: 50px;
+      width: max-content;
+      animation: marquee 25s linear infinite;
     }
-    .section-title h2 {
+    .tech-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .tech-item i { font-size: 20px; color: var(--accent); }
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(50%); }
+    }
+
+    /* Section Global Headers */
+    .section-head {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 48px;
+      padding: 0 20px;
+    }
+    .section-head .sub-title {
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .section-head h2 {
+      font-size: 34px;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+    .section-head p {
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+
+    /* Slider / Portfolio Section */
+    .portfolio-slider-section {
+      max-width: 1240px;
+      margin: 0 auto 100px;
+      padding: 0 24px;
+      position: relative;
+    }
+    .slider-container {
+      position: relative;
+      background: var(--bg-surface);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    }
+    .slider-track {
+      display: flex;
+      transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    .slide-card {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+      gap: 40px;
+      padding: 50px 60px;
+    }
+    .slide-info h3 {
       font-size: 28px;
       font-weight: 800;
+      margin-bottom: 14px;
       color: #fff;
     }
-    .section-title p {
+    .slide-tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(0, 242, 254, 0.1);
+      border: 1px solid rgba(0, 242, 254, 0.3);
+      color: var(--cyan-accent);
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .slide-info p {
       color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+    .slide-features {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+    .slide-features li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-size: 14px;
+      color: #cbd5e1;
     }
+    .slide-features li i { color: #10b981; }
 
-    .slider-wrapper {
+    /* Visual Mockup inside Slider */
+    .mockup-container {
       position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      border: 1px solid var(--card-border);
-      background: #0f1523;
-      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
-    }
-    .slides {
       display: flex;
-      transition: transform 0.5s ease-in-out;
-      width: 100%;
-    }
-    .slide {
-      min-width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      background: radial-gradient(circle at center, rgba(30, 41, 59, 0.4), #090d16);
-    }
-    .mockup-frame {
-      width: 100%;
-      max-width: 750px;
-      height: 380px;
-      border-radius: 14px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
-      text-align: center;
-      padding: 30px;
-      position: relative;
-      overflow: hidden;
     }
-    .mockup-frame::before {
-      content: '';
+    .mockup-img-frame {
+      width: 100%;
+      max-width: 480px;
+      height: 330px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+      position: relative;
+    }
+    .mockup-img-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .mockup-img-frame:hover img {
+      transform: scale(1.05);
+    }
+    .floating-pill {
       position: absolute;
-      top: -50%; left: -50%; width: 200%; height: 200%;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
-      opacity: 0.25;
+      bottom: -15px;
+      right: -15px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(10px);
+      padding: 12px 18px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
     }
-    .mockup-icon { font-size: 50px; margin-bottom: 12px; }
-    .mockup-title { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: #fff; }
-    .mockup-desc { color: var(--text-muted); font-size: 14px; max-width: 500px; }
+    .floating-pill i { font-size: 24px; color: var(--accent); }
+    .floating-pill span { font-size: 12px; color: var(--text-muted); display: block; }
+    .floating-pill strong { font-size: 14px; color: #fff; font-weight: 700; }
 
-    .slider-btn {
+    /* Slider Controls */
+    .slider-arrow {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      background: rgba(18, 24, 38, 0.9);
+      width: 48px;
+      height: 48px;
+      background: rgba(12, 18, 30, 0.9);
       border: 1px solid var(--card-border);
-      color: #fff;
-      width: 44px;
-      height: 44px;
       border-radius: 50%;
-      cursor: pointer;
-      font-size: 18px;
+      color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
+      cursor: pointer;
       z-index: 10;
-      transition: background 0.2s;
+      transition: all 0.2s;
     }
-    .slider-btn:hover { background: var(--accent); }
-    .prev-btn { right: 15px; }
-    .next-btn { left: 15px; }
+    .slider-arrow:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      box-shadow: 0 0 15px var(--accent-glow);
+    }
+    .arrow-prev { right: 20px; }
+    .arrow-next { left: 20px; }
+
+    .slider-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .dot {
+      width: 12px;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .dot.active {
+      width: 30px;
+      background: var(--accent);
+    }
 
     /* Services Grid */
     .services-section {
-      max-width: 1200px;
-      margin: 0 auto 80px;
+      max-width: 1280px;
+      margin: 0 auto 100px;
       padding: 0 24px;
     }
-    .grid {
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 24px;
     }
-    .card {
+    .service-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 28px;
-      transition: transform 0.2s, border-color 0.2s;
+      border-radius: var(--radius-md);
+      padding: 36px 30px;
+      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
     }
-    .card:hover {
-      transform: translateY(-4px);
+    .service-card:hover {
+      transform: translateY(-6px);
       border-color: rgba(255, 107, 0, 0.4);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
     }
-    .card-icon {
-      font-size: 32px;
-      margin-bottom: 16px;
-      display: inline-block;
+    .service-card::after {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 60px; height: 60px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s;
     }
-    .card h3 {
-      font-size: 18px;
+    .service-card:hover::after { opacity: 1; }
+    .service-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 12px;
+      background: rgba(255, 107, 0, 0.1);
+      border: 1px solid rgba(255, 107, 0, 0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: var(--accent);
+      margin-bottom: 22px;
+    }
+    .service-card h3 {
+      font-size: 20px;
       font-weight: 800;
-      margin-bottom: 10px;
-      color: #fff;
+      margin-bottom: 12px;
     }
-    .card p {
-      font-size: 13.5px;
+    .service-card p {
       color: var(--text-muted);
+      font-size: 14.5px;
       line-height: 1.7;
     }
 
-    /* Contact Info Footer */
-    .footer-box {
+    /* Workflow / Process Section */
+    .process-section {
+      background: rgba(12, 18, 30, 0.4);
       border-top: 1px solid var(--card-border);
-      background: #06090f;
-      padding: 50px 24px 20px;
+      border-bottom: 1px solid var(--card-border);
+      padding: 90px 24px;
+      margin-bottom: 100px;
     }
-    .contact-container {
+    .process-container {
       max-width: 1200px;
       margin: 0 auto;
+    }
+    .process-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
-      margin-bottom: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+      position: relative;
     }
-    .contact-item {
-      background: rgba(18, 24, 38, 0.4);
+    .process-step {
+      background: rgba(18, 24, 38, 0.5);
       border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 18px;
+      border-radius: var(--radius-md);
+      padding: 30px 24px;
+      position: relative;
     }
-    .contact-item label {
-      display: block;
-      font-size: 12px;
+    .step-number {
+      font-size: 32px;
+      font-weight: 900;
+      color: rgba(255, 107, 0, 0.3);
+      margin-bottom: 10px;
+    }
+    .process-step h4 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+    .process-step p {
+      font-size: 13.5px;
       color: var(--text-muted);
-      margin-bottom: 6px;
-    }
-    .contact-item strong {
-      font-size: 14px;
-      color: #fff;
-    }
-    .copy {
-      text-align: center;
-      color: #64748b;
-      font-size: 13px;
-      padding-top: 20px;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
     }
 
+    /* CTA Box */
+    .cta-wrapper {
+      max-width: 1100px;
+      margin: 0 auto 100px;
+      padding: 0 24px;
+    }
+    .cta-card {
+      background: linear-gradient(135deg, rgba(255, 107, 0, 0.15) 0%, rgba(12, 18, 30, 0.95) 100%);
+      border: 1px solid rgba(255, 107, 0, 0.3);
+      border-radius: var(--radius-lg);
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+    .cta-card h2 {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+    .cta-card p {
+      color: var(--text-muted);
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-size: 16px;
+    }
+
+    /* Footer Details */
+    footer {
+      background: #04070c;
+      border-top: 1px solid var(--card-border);
+      padding: 70px 24px 30px;
+    }
+    .footer-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 50px;
+      margin-bottom: 50px;
+    }
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 16px;
+      max-width: 340px;
+      line-height: 1.7;
+    }
+    .footer-col h4 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #fff;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-col ul li, .footer-col ul li a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--accent); }
+    .contact-badge-box {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .contact-badge {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+    .contact-badge i {
+      color: var(--accent);
+      font-size: 16px;
+      margin-top: 4px;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .slide-card { grid-template-columns: 1fr; padding: 40px 24px; text-align: center; }
+      .slide-features { align-items: center; }
+      .floating-pill { right: 10px; bottom: 10px; }
+      .footer-container { grid-template-columns: 1fr; gap: 35px; }
+    }
     @media (max-width: 768px) {
-      .hero h1 { font-size: 28px; }
-      .mockup-frame { height: 300px; }
       .nav-links { display: none; }
+      .hero h1 { font-size: 34px; }
+      .slider-arrow { display: none; }
+      .cta-card h2 { font-size: 26px; }
     }
   </style>
 </head>
 <body>
 
+  <div class="glow-bg"></div>
+
   <!-- Navbar -->
   <header>
     <div class="nav-container">
-      <div class="brand">ماركتينج <span>بروكرس</span></div>
+      <a href="#" class="brand">
+        <div class="brand-dot"></div>
+        ماركتينج <span>بروكرس</span>
+      </a>
+
       <nav class="nav-links">
-        <a href="#services">الخدمات</a>
-        <a href="#portfolio">الأعمال</a>
-        <a href="#contact">التواصل</a>
+        <a href="#services">الخدمات التقنية</a>
+        <a href="#portfolio">معرض النماذج</a>
+        <a href="#process">دورة العمل</a>
+        <a href="#contact">بيانات التواصل</a>
       </nav>
-      <a href="mailto:marketingbrokerkw@gmail.com" class="btn-action">طلب استشارة تقنية</a>
+
+      <div class="nav-actions">
+        <a href="https://wa.me/?text=مرحباً%20ماركتينج%20بروكرس،%20أرغب%20في%20استشارة%20برمجية" target="_blank" class="btn-primary">
+          <i class="fa-brands fa-whatsapp"></i> تواصل معنا
+        </a>
+      </div>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
-    <div class="hero-badge">مؤسسة حلول رقمية وهندسة برمجيات</div>
-    <h1>نبني تطبيقات ومواقع إلكترونية بمعايير عالمية</h1>
+    <div class="badge">
+      <i class="fa-solid fa-code"></i> استوديو هندسة البرمجيات والحلول الرقمية
+    </div>
+    <h1>
+      نحوّل رؤيتك إلى <span class="text-gradient">تطبيقات ذكية ومنصات ويب فائقة القوة</span>
+    </h1>
     <p>
-      نطور حلولاً رقمية تفاعلية وأنظمة برمجية متكاملة تدمج بين الأداء الفائق والواجهات العصرية لتمكين الشركات والأعمال من التوسع والنمو.
+      نبتكر حلولاً برمجية متكاملة للشركات والناشئين. نجمع بين أحدث معماريات السحابة وتصميم واجهات المستخدم (UI/UX) السلسة لبناء تطبيقات أندرويد و iOS ومواقع تحقق النمو والتوسع.
     </p>
 
-    <div class="metrics">
-      <div class="metric-item">
-        <h3>+100%</h3>
-        <p>معايير جودة وأداء</p>
-      </div>
-      <div class="metric-item">
-        <h3>Cloud</h3>
-        <p>بنية تحتية سحابية</p>
-      </div>
-      <div class="metric-item">
-        <h3>Native & Flutter</h3>
-        <p>تطبيقات الجوال الحديثة</p>
-      </div>
+    <div class="hero-buttons">
+      <a href="#portfolio" class="btn-primary">
+        <i class="fa-solid fa-layer-group"></i> استعرض نماذج الأعمال
+      </a>
+      <a href="mailto:marketingbrokerkw@gmail.com" class="btn-outline">
+        <i class="fa-regular fa-envelope"></i> طلب دراسة مشروع
+      </a>
     </div>
   </section>
 
-  <!-- Interactive Slider Section -->
-  <section class="slider-section" id="portfolio">
-    <div class="section-title">
-      <h2>نماذج الأنظمة والواجهات</h2>
-      <p>معاينة لهياكل الأنظمة والتطبيقات التي نقوم بتصميمها وتطويرها</p>
+  <!-- Tech Stack Marquee -->
+  <div class="tech-bar">
+    <div class="tech-track">
+      <div class="tech-item"><i class="fa-brands fa-flutter"></i> Flutter Mobile</div>
+      <div class="tech-item"><i class="fa-brands fa-react"></i> React & Next.js</div>
+      <div class="tech-item"><i class="fa-brands fa-apple"></i> Native iOS (Swift)</div>
+      <div class="tech-item"><i class="fa-brands fa-android"></i> Kotlin Android</div>
+      <div class="tech-item"><i class="fa-brands fa-node-js"></i> Node.js Backend</div>
+      <div class="tech-item"><i class="fa-brands fa-aws"></i> AWS Cloud & DevOps</div>
+      <div class="tech-item"><i class="fa-brands fa-python"></i> Python & AI Models</div>
+      <div class="tech-item"><i class="fa-brands fa-figma"></i> UI/UX Modern Design</div>
+      <!-- Duplicate for seamless loop -->
+      <div class="tech-item"><i class="fa-brands fa-flutter"></i> Flutter Mobile</div>
+      <div class="tech-item"><i class="fa-brands fa-react"></i> React & Next.js</div>
+      <div class="tech-item"><i class="fa-brands fa-apple"></i> Native iOS (Swift)</div>
+      <div class="tech-item"><i class="fa-brands fa-android"></i> Kotlin Android</div>
+      <div class="tech-item"><i class="fa-brands fa-node-js"></i> Node.js Backend</div>
+    </div>
+  </div>
+
+  <!-- Showcase / Portfolio Slider -->
+  <section class="portfolio-slider-section" id="portfolio">
+    <div class="section-head">
+      <span class="sub-title">سابقة الأعمال والنماذج</span>
+      <h2>تطبيقات وأنظمة مصممة للريادة</h2>
+      <p>معاينة تفاعلية لأحدث المنظومات التي قمنا بهندستها وتطوير واجهاتها</p>
     </div>
 
-    <div class="slider-wrapper">
-      <div class="slides" id="slides">
+    <div class="slider-container">
+      <div class="slider-track" id="sliderTrack">
         
-        <!-- Slide 1: App UI -->
-        <div class="slide">
-          <div class="mockup-frame">
-            <div class="mockup-icon">📱</div>
-            <div class="mockup-title">واجهات تطبيقات الجوال الذكية</div>
-            <div class="mockup-desc">تصميم وتطوير واجهات مستخدم سلسة بتقنيات Cross-Platform لتطبيقات التجارة الإلكترونية، حجوزات الخدمات، ومنصات التوصيل.</div>
+        <!-- Slide 1 -->
+        <div class="slide-card">
+          <div class="slide-info">
+            <span class="slide-tag">تطبيقات الموبايل المتقدمة</span>
+            <h3>منصة تجارة إلكترونية وتوصيل سريع</h3>
+            <p>تطبيق تجارة إلكترونية متكامل يدعم الدفع الفوري (K-Net & Apple Pay)، وتتبع الشحنات بالخرائط اللحظية، وتجربة تسوق ذكية متوافقة مع Android و iOS.</p>
+            <ul class="slide-features">
+              <li><i class="fa-solid fa-circle-check"></i> لوحة تحكم للتحليلات وإدارة الطلبات</li>
+              <li><i class="fa-solid fa-circle-check"></i> زمن تحميل أقل من 0.8 ثانية</li>
+              <li><i class="fa-solid fa-circle-check"></i> ربط مباشر مع بوابات الدفع المحلية والخليجية</li>
+            </ul>
+          </div>
+          <div class="mockup-container">
+            <div class="mockup-img-frame">
+              <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=800&q=80" alt="تطبيق جوال للتجارة والتوصيل">
+            </div>
+            <div class="floating-pill">
+              <i class="fa-solid fa-mobile-screen-button"></i>
+              <div>
+                <span>تطبيق موبايل</span>
+                <strong>iOS & Android</strong>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Slide 2: Dashboard System -->
-        <div class="slide">
-          <div class="mockup-frame">
-            <div class="mockup-icon">📊</div>
-            <div class="mockup-title">لوحات تحكم الإدارة السحابية</div>
-            <div class="mockup-desc">بناء نظم ERP مخصصة ولوحات تحكم فورية لتحليل المبيعات، إدارة المخزون، ومراقبة العمليات المؤسسية بدقة.</div>
+        <!-- Slide 2 -->
+        <div class="slide-card">
+          <div class="slide-info">
+            <span class="slide-tag">المنصات السحابية والـ SaaS</span>
+            <h3>نظام ERP ولوحة تحكم الأعمال المؤسسية</h3>
+            <p>منظومة إدارة موارد مؤسسية سحابية تتيح تتبع المخزون، إدارة الفواتير والمحاسبة، وتحليل أداء الموظفين والمبيعات عبر رسوم بيانية فورية وموثوقة.</p>
+            <ul class="slide-features">
+              <li><i class="fa-solid fa-circle-check"></i> حماية وتشفير متطور للبيانات (AES-256)</li>
+              <li><i class="fa-solid fa-circle-check"></i> تقارير ذكاء أعمال (BI) وتصدير تلقائي</li>
+              <li><i class="fa-solid fa-circle-check"></i> متوافق مع كافة أحجام الشاشات</li>
+            </ul>
+          </div>
+          <div class="mockup-container">
+            <div class="mockup-img-frame">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80" alt="لوحة تحكم وتحليلات سحابية">
+            </div>
+            <div class="floating-pill">
+              <i class="fa-solid fa-chart-line"></i>
+              <div>
+                <span>لوحة تحكم</span>
+                <strong>SaaS Dashboard</strong>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Slide 3: Web Solutions -->
-        <div class="slide">
-          <div class="mockup-frame">
-            <div class="mockup-icon">💻</div>
-            <div class="mockup-title">المواقع والمنصات التفاعلية</div>
-            <div class="mockup-desc">تطوير منصات ويب تفاعلية متوافقة مع جميع الأجهزة ومجهزة بأحدث معايير الأمان وتحسين محركات البحث.</div>
+        <!-- Slide 3 -->
+        <div class="slide-card">
+          <div class="slide-info">
+            <span class="slide-tag">المنصات الرقمية والتطبيب عن بُعد</span>
+            <h3>تطبيق حجز الخدمات والعيادات الذكية</h3>
+            <p>منظومة رقمية لحجز المواعيد والاستشارات الطبية، توفر مكالمات فيديو آمنة، نظام إشعارات ذكي، وسجلات إلكترونية مدمجة تلبي المعايير الصحية العالمية.</p>
+            <ul class="slide-features">
+              <li><i class="fa-solid fa-circle-check"></i> إدارة مواعيد الأطباء والعملاء بسهولة</li>
+              <li><i class="fa-solid fa-circle-check"></i> محادثات فورية ومكالمات مشفرة</li>
+              <li><i class="fa-solid fa-circle-check"></i> واجهة UI/UX تضمن سهولة الاستخدام</li>
+            </ul>
+          </div>
+          <div class="mockup-container">
+            <div class="mockup-img-frame">
+              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80" alt="تطبيق رعاية طبية وحجوزات">
+            </div>
+            <div class="floating-pill">
+              <i class="fa-solid fa-laptop-code"></i>
+              <div>
+                <span>منصة رقمية</span>
+                <strong>Cloud Platform</strong>
+              </div>
+            </div>
           </div>
         </div>
 
       </div>
 
-      <!-- Navigation Arrows -->
-      <button class="slider-btn prev-btn" onclick="prevSlide()">&#10095;</button>
-      <button class="slider-btn next-btn" onclick="nextSlide()">&#10094;</button>
+      <!-- Controls -->
+      <button class="slider-arrow arrow-prev" onclick="prevSlide()"><i class="fa-solid fa-chevron-right"></i></button>
+      <button class="slider-arrow arrow-next" onclick="nextSlide()"><i class="fa-solid fa-chevron-left"></i></button>
+    </div>
+
+    <div class="slider-dots" id="dotsContainer">
+      <div class="dot active" onclick="goToSlide(0)"></div>
+      <div class="dot" onclick="goToSlide(1)"></div>
+      <div class="dot" onclick="goToSlide(2)"></div>
     </div>
   </section>
 
   <!-- Services Grid -->
   <section class="services-section" id="services">
-    <div class="section-title">
-      <h2>مجالات التميز البرمجي والتقني</h2>
-      <p>خدمات متكاملة تغطي دورة حياة المنتج الرقمي من التخطيط إلى الإطلاق</p>
+    <div class="section-head">
+      <span class="sub-title">ماذا نقدم؟</span>
+      <h2>خدمات برمجية ترتكز على الابتكار</h2>
+      <p>حلول تقنية متكاملة تنقل مشروعك من الفكرة إلى منتج برمجي منافس في السوق</p>
     </div>
 
-    <div class="grid">
-      <div class="card">
-        <div class="card-icon">⚡</div>
-        <h3>تطوير تطبيقات الهواتف</h3>
-        <p>بناء تطبيقات Android و iOS حديثة تتميز بسرعة الاستجابة واستقرار البنية التحتية، مع تكامل مثالي للخدمات والمدفوعات الإلكترونية.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+        <h3>تطوير تطبيقات الهواتف الذكية</h3>
+        <p>نطور تطبيقات الهواتف لنظامي iOS و Android باستخدام Flutter و Swift، مع أداء سلس، واستقرار بنية الخوادم وتجربة مستخدم متميزة.</p>
       </div>
 
-      <div class="card">
-        <div class="card-icon">🌐</div>
-        <h3>تطوير الأنظمة السحابية والويب</h3>
-        <p>تصميم وتطوير مواقع الشركات وبوابات الخدمات الإلكترونية باستخدام أحدث أطر العمل لتوفير تجربة مستخدم سريعة وآمنة.</p>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
+        <h3>برمجة المنصات والمواقع المخصصة</h3>
+        <p>بناء مواقع تعريفية وبوابات إلكترونية تفاعلية باستخدام React و Next.js لضمان أعلى معايير السرعة، التجاوب، وتهيئة محركات البحث (SEO).</p>
       </div>
 
-      <div class="card">
-        <div class="card-icon">🗄️</div>
-        <h3>هندسة الـ APIs وقواعد البيانات</h3>
-        <p>تأسيس خوادم خلفية متينة وقابلة للتوسع (Scalable Backends) لإدارة تدفق البيانات الضخمة وضمان كفاءة مزامنة العمليات.</p>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-server"></i></div>
+        <h3>هندسة الخوادم والـ APIs السحابية</h3>
+        <p>تصميم بنى تحتية وقواعد بيانات سريعة وقابلة للتوسع (Scalable Cloud Backends) تضمن تحمل ملايين العمليات والمزامنة دون انقطاع.</p>
       </div>
 
-      <div class="card">
-        <div class="card-icon">📈</div>
-        <h3>الاستشارات الرقمية ونمو المنتجات</h3>
-        <p>دراسة تجربة المستخدم (UX/UI)، وتحليل أداء التطبيقات والمنصات في السوق لضمان وصولها إلى الفئات المستهدفة بنجاح.</p>
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3>تصميم واجهات المستخدم UI / UX</h3>
+        <p>دراسة سلوك المستهلك وصياغة نماذج تفاعلية ونماذج عمل (Prototypes) تضمن سلاسة رحلة العميل داخل التطبيق ورفع معدل التحويل.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-credit-card"></i></div>
+        <h3>تكامل بوابات الدفع والتجارة</h3>
+        <p>ربط آمن ومباشر مع كافة بوابات الدفع الخليجية والعالمية، وحلول الفوترة التلقائية، وخدمات الـ SMS والإشعارات الفورية.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h3>الصيانة والأمان والدعم الفني</h3>
+        <p>مراقبة مستمرة لأداء التطبيقات، وتحديثات أمنية دورية لسد الثغرات، مع دعم تقني متخصص لضمان استقرار أعمالك على مدار الساعة.</p>
       </div>
     </div>
   </section>
 
-  <!-- Contact & Legal Info -->
-  <footer class="footer-box" id="contact">
-    <div class="contact-container">
-      <div class="contact-item">
-        <label>الكيان التجاري</label>
-        <strong>ماركتينج بروكرس للاستشارات التسويقية</strong>
+  <!-- Process Section -->
+  <section class="process-section" id="process">
+    <div class="process-container">
+      <div class="section-head">
+        <span class="sub-title">منهجية التطوير</span>
+        <h2>كيف ننفذ مشروعك البرمجي؟</h2>
+        <p>نتبع منهجية Agile الاحترافية لضمان التسليم الدقيق والمطابق للمواصفات</p>
       </div>
-      <div class="contact-item">
-        <label>العنوان التجاري المسجل</label>
-        <strong>الكويت، حولي، ق 7، شارع 281، قسيمة 005409</strong>
-      </div>
-      <div class="contact-item">
-        <label>المقر والوحدة</label>
-        <strong>مبنى سهيلة اليوسفي - وحدة 1</strong>
-      </div>
-      <div class="contact-item">
-        <label>البريد الإلكتروني المعتمد</label>
-        <strong>marketingbrokerkw@gmail.com</strong>
+
+      <div class="process-grid">
+        <div class="process-step">
+          <div class="step-number">01</div>
+          <h4>تحليل المتطلبات والـ UX</h4>
+          <p>جلسة استكشافية لفهم نموذج عملك ورسم الهيكل المعماري وسيناريوهات المستخدمين.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">02</div>
+          <h4>تصميم النماذج التفاعلية</h4>
+          <p>تصميم واجهات الـ UI الحديثة واختبار النماذج على Figma قبل الشروع في كتابة الكود.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">03</div>
+          <h4>البرمجة وهندسة النظام</h4>
+          <p>كتابة كود برمجي نظيف وقوي للواجهات والخوادم وربط قواعد البيانات السحابية.</p>
+        </div>
+
+        <div class="process-step">
+          <div class="step-number">04</div>
+          <h4>فحص الجودة والإطلاق</h4>
+          <p>اختبارات الأمان والأداء الصارمة (QA Testing) ورفع التطبيقات على Google Play و App Store.</p>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="copy">
+  <!-- CTA Box -->
+  <div class="cta-wrapper">
+    <div class="cta-card">
+      <h2>جاهز لتحويل فكرتك إلى تطبيق واقعي؟</h2>
+      <p>تواصل مع فريقنا الهندسي اليوم للحصول على استشارة تقنية مجانية ودراسة متكاملة لتكلفة وجدول تنفيذ مشروعك.</p>
+      <a href="https://wa.me/?text=مرحباً،%20أريد%20مناقشة%20تطوير%20مشروع%20جديد" target="_blank" class="btn-primary">
+        <i class="fa-brands fa-whatsapp"></i> ابدأ محادثة مباشرة
+      </a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="footer-container">
+      
+      <div class="footer-brand">
+        <a href="#" class="brand">
+          <div class="brand-dot"></div>
+          ماركتينج <span>بروكرس</span>
+        </a>
+        <p>
+          مؤسسة متخصصة في تقديم الاستشارات التقنية وتطوير الحلول البرمجية الذكية للشركات والمشاريع الريادية في دولة الكويت والخليج العربي.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>روابط سريعة</h4>
+        <ul>
+          <li><a href="#services">برمجة التطبيقات</a></li>
+          <li><a href="#services">تطوير مواقع الويب</a></li>
+          <li><a href="#portfolio">سابقة الأعمال</a></li>
+          <li><a href="#process">مراحل التنفيذ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>البيانات الرسمية والمقر</h4>
+        <div class="contact-badge-box">
+          <div class="contact-badge">
+            <i class="fa-solid fa-building"></i>
+            <div>ماركتينج بروكرس للاستشارات التسويقية</div>
+          </div>
+          <div class="contact-badge">
+            <i class="fa-solid fa-location-dot"></i>
+            <div>الكويت، حولي، ق 7، شارع 281، قسيمة 005409، مبنى سهيلة اليوسفي - وحدة 1</div>
+          </div>
+          <div class="contact-badge">
+            <i class="fa-solid fa-envelope"></i>
+            <div>marketingbrokerkw@gmail.com</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="copyright">
       جميع الحقوق محفوظة © 2026 ماركتينج بروكرس للاستشارات التسويقية | Marketing Broker
     </div>
   </footer>
 
-  <!-- Simple Slider Script -->
+  <!-- Slider Functionality -->
   <script>
-    let currentSlide = 0;
-    const slides = document.getElementById('slides');
+    let currentSlideIndex = 0;
+    const track = document.getElementById('sliderTrack');
+    const dots = document.querySelectorAll('.dot');
     const totalSlides = 3;
 
-    function showSlide(index) {
-      if (index >= totalSlides) currentSlide = 0;
-      else if (index < 0) currentSlide = totalSlides - 1;
-      else currentSlide = index;
-      slides.style.transform = `translateX(${currentSlide * 100}%)`;
+    function updateSlider() {
+      // In RTL context, translateX is positive to move left
+      track.style.transform = `translateX(${currentSlideIndex * 100}%)`;
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlideIndex);
+      });
     }
 
-    function nextSlide() { showSlide(currentSlide + 1); }
-    function prevSlide() { showSlide(currentSlide - 1); }
+    function nextSlide() {
+      currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+      updateSlider();
+    }
 
-    // Auto rotate every 4 seconds
-    setInterval(() => {
-      nextSlide();
-    }, 4000);
+    function prevSlide() {
+      currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    }
+
+    function goToSlide(index) {
+      currentSlideIndex = index;
+      updateSlider();
+    }
+
+    // Auto Play every 5 seconds
+    let slideTimer = setInterval(nextSlide, 5000);
+
+    const sliderContainer = document.querySelector('.slider-container');
+    sliderContainer.addEventListener('mouseenter', () => clearInterval(slideTimer));
+    sliderContainer.addEventListener('mouseleave', () => slideTimer = setInterval(nextSlide, 5000));
   </script>
 
 </body>
