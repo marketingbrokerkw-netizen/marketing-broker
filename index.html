@@ -3,187 +3,473 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ماركتينج بروكرس للاستشارات التسويقية</title>
+  <title>ماركتينج بروكرس | حلول برمجية وتطوير التطبيقات</title>
+  
+  <!-- كود إثبات الملكية لـ Google Search Console -->
   <meta name="google-site-verification" content="mF_1oMmJMzJ78i9Q7QoEIyVD6zs-tdCp2ng50gHIxBI" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg: #0b0f19;
-      --card-bg: #111827;
-      --border: rgba(255, 255, 255, 0.08);
-      --primary: #ff6b00;
-      --primary-glow: rgba(255, 107, 0, 0.12);
-      --text: #f9fafb;
-      --text-muted: #9ca3af;
+      --bg-dark: #090d16;
+      --card-bg: rgba(18, 24, 38, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #ff6b00;
+      --accent-glow: rgba(255, 107, 0, 0.25);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Tajawal', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      padding: 40px 20px;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Header & Nav */
+    header {
+      position: fixed;
+      top: 0; width: 100%;
+      backdrop-filter: blur(16px);
+      background: rgba(9, 13, 22, 0.85);
+      border-bottom: 1px solid var(--card-border);
+      z-index: 100;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
       display: flex;
-      justify-content: center;
+      justify-content: space-between;
+      align-items: center;
     }
-    .wrapper {
-      width: 100%;
-      max-width: 1000px;
+    .brand {
+      font-size: 20px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .header-card {
-      background: linear-gradient(135deg, rgba(31, 41, 55, 0.7), rgba(17, 24, 39, 0.9));
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 32px;
-      margin-bottom: 24px;
+    .brand span { color: var(--accent); }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-right: 24px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
     }
-    .badge {
+    .nav-links a:hover { color: var(--accent); }
+    .btn-action {
+      background: var(--accent);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 13px;
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 150px 24px 70px;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .hero-badge {
       display: inline-block;
-      background: var(--primary-glow);
-      color: var(--primary);
+      padding: 6px 16px;
+      background: rgba(255, 107, 0, 0.1);
       border: 1px solid rgba(255, 107, 0, 0.3);
-      padding: 6px 14px;
       border-radius: 30px;
+      color: var(--accent);
       font-size: 13px;
       font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 20px;
     }
-    h1 {
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 18px;
+      background: linear-gradient(180deg, #ffffff 40%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: 0 auto 30px;
+    }
+
+    /* Metrics */
+    .metrics {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+    .metric-item h3 {
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .metric-item p {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Slider Container */
+    .slider-section {
+      max-width: 1100px;
+      margin: 40px auto 80px;
+      padding: 0 20px;
+      position: relative;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+    .section-title h2 {
       font-size: 28px;
       font-weight: 800;
       color: #fff;
-      margin-bottom: 6px;
     }
-    .en-title {
+    .section-title p {
       color: var(--text-muted);
       font-size: 14px;
-      letter-spacing: 0.5px;
-      margin-bottom: 16px;
     }
-    .about-text {
-      color: #d1d5db;
-      font-size: 15px;
-      line-height: 1.8;
-      max-width: 850px;
+
+    .slider-wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid var(--card-border);
+      background: #0f1523;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.6);
     }
-    .section-head {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 16px;
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
     }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 16px;
-      margin-bottom: 28px;
+    .slide {
+      min-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      background: radial-gradient(circle at center, rgba(30, 41, 59, 0.4), #090d16);
     }
-    .service-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+    .mockup-frame {
+      width: 100%;
+      max-width: 750px;
+      height: 380px;
       border-radius: 14px;
-      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
     }
-    .service-icon {
-      font-size: 24px;
-      margin-bottom: 10px;
+    .mockup-frame::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%; width: 200%; height: 200%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+      opacity: 0.25;
     }
-    .service-title {
-      font-size: 16px;
-      font-weight: 700;
+    .mockup-icon { font-size: 50px; margin-bottom: 12px; }
+    .mockup-title { font-size: 22px; font-weight: 800; margin-bottom: 8px; color: #fff; }
+    .mockup-desc { color: var(--text-muted); font-size: 14px; max-width: 500px; }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(18, 24, 38, 0.9);
+      border: 1px solid var(--card-border);
       color: #fff;
-      margin-bottom: 8px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.2s;
     }
-    .service-desc {
-      font-size: 13px;
+    .slider-btn:hover { background: var(--accent); }
+    .prev-btn { right: 15px; }
+    .next-btn { left: 15px; }
+
+    /* Services Grid */
+    .services-section {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      padding: 0 24px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 28px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 107, 0, 0.4);
+    }
+    .card-icon {
+      font-size: 32px;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+    .card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    .card p {
+      font-size: 13.5px;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.7;
     }
-    .contact-grid {
+
+    /* Contact Info Footer */
+    .footer-box {
+      border-top: 1px solid var(--card-border);
+      background: #06090f;
+      padding: 50px 24px 20px;
+    }
+    .contact-container {
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 14px;
-      margin-bottom: 30px;
+      gap: 24px;
+      margin-bottom: 40px;
     }
     .contact-item {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+      background: rgba(18, 24, 38, 0.4);
+      border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 16px;
+      padding: 18px;
     }
-    .contact-label {
+    .contact-item label {
+      display: block;
       font-size: 12px;
       color: var(--text-muted);
       margin-bottom: 6px;
     }
-    .contact-val {
+    .contact-item strong {
       font-size: 14px;
-      font-weight: 700;
-      color: #f3f4f6;
+      color: #fff;
     }
-    footer {
+    .copy {
       text-align: center;
-      padding: 20px;
-      font-size: 12px;
-      color: #6b7280;
-      border-top: 1px solid var(--border);
+      color: #64748b;
+      font-size: 13px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 28px; }
+      .mockup-frame { height: 300px; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
-    <div class="header-card">
-      <div class="badge">حلول تقنية وتسويقية متكاملة</div>
-      <h1>ماركتينج بروكرس للاستشارات التسويقية</h1>
-      <div class="en-title">MARKETING BROKER FOR MARKETING CONSULTING</div>
-      <p class="about-text">
-        مؤسسة رائدة في دولة الكويت متخصصة في هندسة البرمجيات وتطوير الحلول الرقمية، تصميم تطبيقات الهواتف الذكية المتقدمة، وتقديم الاستشارات التسويقية المبنية على تحليل البيانات لتمكين المشاريع والأنظمة التجارية.
-      </p>
-    </div>
 
-    <div class="section-head">مجالات الأعمال والخدمات البرمجية</div>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">📱</div>
-        <div class="service-title">تطوير تطبيقات الجوال</div>
-        <div class="service-desc">بناء تطبيقات متكاملة لأنظمة Android و iOS بأحدث التقنيات والمعايير البرمجية.</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">⚙️</div>
-        <div class="service-title">الأنظمة الإدارية والسحابية</div>
-        <div class="service-desc">برمجة لوحات التحكم والبنية التحتية والواجهات الخلفية (APIs) لإدارة قواعد البيانات والعمليات.</div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📊</div>
-        <div class="service-title">الاستشارات والحلول التسويقية</div>
-        <div class="service-desc">صياغة الاستراتيجيات التسويقية الرقمية وتحليل نمو المنتجات والأنظمة في السوق.</div>
-      </div>
+  <!-- Navbar -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">ماركتينج <span>بروكرس</span></div>
+      <nav class="nav-links">
+        <a href="#services">الخدمات</a>
+        <a href="#portfolio">الأعمال</a>
+        <a href="#contact">التواصل</a>
+      </nav>
+      <a href="mailto:marketingbrokerkw@gmail.com" class="btn-action">طلب استشارة تقنية</a>
     </div>
+  </header>
 
-    <div class="section-head">المقر وقنوات التواصل المعتمدة</div>
-    <div class="contact-grid">
-      <div class="contact-item">
-        <div class="contact-label">العنوان التجاري</div>
-        <div class="contact-val">الكويت، حولي، ق 7، شارع 281، قسيمة 005409</div>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-badge">مؤسسة حلول رقمية وهندسة برمجيات</div>
+    <h1>نبني تطبيقات ومواقع إلكترونية بمعايير عالمية</h1>
+    <p>
+      نطور حلولاً رقمية تفاعلية وأنظمة برمجية متكاملة تدمج بين الأداء الفائق والواجهات العصرية لتمكين الشركات والأعمال من التوسع والنمو.
+    </p>
+
+    <div class="metrics">
+      <div class="metric-item">
+        <h3>+100%</h3>
+        <p>معايير جودة وأداء</p>
       </div>
-      <div class="contact-item">
-        <div class="contact-label">المقر والوحدة</div>
-        <div class="contact-val">مبنى سهيلة اليوسفي - وحدة 1 (الدور الأرضي)</div>
+      <div class="metric-item">
+        <h3>Cloud</h3>
+        <p>بنية تحتية سحابية</p>
       </div>
-      <div class="contact-item">
-        <div class="contact-label">الرقم الآلي للعنوان (PACI)</div>
-        <div class="contact-val">20633745</div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-label">البريد الإلكتروني المعتمد</div>
-        <div class="contact-val">marketingbrokerkw@gmail.com</div>
+      <div class="metric-item">
+        <h3>Native & Flutter</h3>
+        <p>تطبيقات الجوال الحديثة</p>
       </div>
     </div>
+  </section>
 
-    <footer>
-      جميع الحقوق محفوظة © 2026 ماركتينج بروكرس للاستشارات التسويقية
-    </footer>
-  </div>
+  <!-- Interactive Slider Section -->
+  <section class="slider-section" id="portfolio">
+    <div class="section-title">
+      <h2>نماذج الأنظمة والواجهات</h2>
+      <p>معاينة لهياكل الأنظمة والتطبيقات التي نقوم بتصميمها وتطويرها</p>
+    </div>
+
+    <div class="slider-wrapper">
+      <div class="slides" id="slides">
+        
+        <!-- Slide 1: App UI -->
+        <div class="slide">
+          <div class="mockup-frame">
+            <div class="mockup-icon">📱</div>
+            <div class="mockup-title">واجهات تطبيقات الجوال الذكية</div>
+            <div class="mockup-desc">تصميم وتطوير واجهات مستخدم سلسة بتقنيات Cross-Platform لتطبيقات التجارة الإلكترونية، حجوزات الخدمات، ومنصات التوصيل.</div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Dashboard System -->
+        <div class="slide">
+          <div class="mockup-frame">
+            <div class="mockup-icon">📊</div>
+            <div class="mockup-title">لوحات تحكم الإدارة السحابية</div>
+            <div class="mockup-desc">بناء نظم ERP مخصصة ولوحات تحكم فورية لتحليل المبيعات، إدارة المخزون، ومراقبة العمليات المؤسسية بدقة.</div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Web Solutions -->
+        <div class="slide">
+          <div class="mockup-frame">
+            <div class="mockup-icon">💻</div>
+            <div class="mockup-title">المواقع والمنصات التفاعلية</div>
+            <div class="mockup-desc">تطوير منصات ويب تفاعلية متوافقة مع جميع الأجهزة ومجهزة بأحدث معايير الأمان وتحسين محركات البحث.</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Navigation Arrows -->
+      <button class="slider-btn prev-btn" onclick="prevSlide()">&#10095;</button>
+      <button class="slider-btn next-btn" onclick="nextSlide()">&#10094;</button>
+    </div>
+  </section>
+
+  <!-- Services Grid -->
+  <section class="services-section" id="services">
+    <div class="section-title">
+      <h2>مجالات التميز البرمجي والتقني</h2>
+      <p>خدمات متكاملة تغطي دورة حياة المنتج الرقمي من التخطيط إلى الإطلاق</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-icon">⚡</div>
+        <h3>تطوير تطبيقات الهواتف</h3>
+        <p>بناء تطبيقات Android و iOS حديثة تتميز بسرعة الاستجابة واستقرار البنية التحتية، مع تكامل مثالي للخدمات والمدفوعات الإلكترونية.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <h3>تطوير الأنظمة السحابية والويب</h3>
+        <p>تصميم وتطوير مواقع الشركات وبوابات الخدمات الإلكترونية باستخدام أحدث أطر العمل لتوفير تجربة مستخدم سريعة وآمنة.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">🗄️</div>
+        <h3>هندسة الـ APIs وقواعد البيانات</h3>
+        <p>تأسيس خوادم خلفية متينة وقابلة للتوسع (Scalable Backends) لإدارة تدفق البيانات الضخمة وضمان كفاءة مزامنة العمليات.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">📈</div>
+        <h3>الاستشارات الرقمية ونمو المنتجات</h3>
+        <p>دراسة تجربة المستخدم (UX/UI)، وتحليل أداء التطبيقات والمنصات في السوق لضمان وصولها إلى الفئات المستهدفة بنجاح.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Legal Info -->
+  <footer class="footer-box" id="contact">
+    <div class="contact-container">
+      <div class="contact-item">
+        <label>الكيان التجاري</label>
+        <strong>ماركتينج بروكرس للاستشارات التسويقية</strong>
+      </div>
+      <div class="contact-item">
+        <label>العنوان التجاري المسجل</label>
+        <strong>الكويت، حولي، ق 7، شارع 281، قسيمة 005409</strong>
+      </div>
+      <div class="contact-item">
+        <label>المقر والوحدة</label>
+        <strong>مبنى سهيلة اليوسفي - وحدة 1</strong>
+      </div>
+      <div class="contact-item">
+        <label>البريد الإلكتروني المعتمد</label>
+        <strong>marketingbrokerkw@gmail.com</strong>
+      </div>
+    </div>
+
+    <div class="copy">
+      جميع الحقوق محفوظة © 2026 ماركتينج بروكرس للاستشارات التسويقية | Marketing Broker
+    </div>
+  </footer>
+
+  <!-- Simple Slider Script -->
+  <script>
+    let currentSlide = 0;
+    const slides = document.getElementById('slides');
+    const totalSlides = 3;
+
+    function showSlide(index) {
+      if (index >= totalSlides) currentSlide = 0;
+      else if (index < 0) currentSlide = totalSlides - 1;
+      else currentSlide = index;
+      slides.style.transform = `translateX(${currentSlide * 100}%)`;
+    }
+
+    function nextSlide() { showSlide(currentSlide + 1); }
+    function prevSlide() { showSlide(currentSlide - 1); }
+
+    // Auto rotate every 4 seconds
+    setInterval(() => {
+      nextSlide();
+    }, 4000);
+  </script>
+
 </body>
 </html>
