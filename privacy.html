@@ -1,62 +1,377 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>سياسة الخصوصية | Privacy Policy</title>
+  <title>Privacy Policy | Salawat App (صلوات) - Marketing Broker</title>
+  
+  <!-- خطوط Google Fonts (Inter للإنجليزية + Tajawal للعربية) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- أيقونات FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              orange: '#FF6B00',
+              orangeHover: '#e05e00',
+              darkBg: '#090D16',
+              cardBg: '#121826',
+              cardBorder: 'rgba(255, 255, 255, 0.08)',
+              highlightBg: 'rgba(255, 107, 0, 0.08)',
+              highlightBorder: 'rgba(255, 107, 0, 0.25)',
+              textMuted: '#94A3B8',
+              accentHover: '#1E293B'
+            }
+          },
+          fontFamily: {
+            en: ['Inter', 'sans-serif'],
+            ar: ['Tajawal', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    body { font-family: 'Tajawal', sans-serif; background-color: #090d16; color: #f8fafc; padding: 40px 20px; line-height: 1.8; }
-    .container { max-width: 850px; margin: 0 auto; background: #121826; border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 32px; }
-    h1 { color: #ff6b00; font-size: 26px; margin-bottom: 20px; font-weight: 800; }
-    h2 { color: #fff; font-size: 18px; margin-top: 24px; margin-bottom: 10px; font-weight: 700; }
-    p, li { color: #94a3b8; font-size: 14.5px; margin-bottom: 12px; }
-    ul { padding-right: 20px; margin-bottom: 16px; }
-    .highlight-box { background: rgba(255,107,0,0.08); border: 1px solid rgba(255,107,0,0.2); padding: 16px; border-radius: 10px; margin-top: 20px; }
-    .highlight-box strong { color: #fff; }
-    .contact { background: #172033; border: 1px solid rgba(255,255,255,0.1); padding: 16px; border-radius: 10px; margin-top: 24px; }
+    body {
+      background-color: #090D16;
+      color: #F8FAFC;
+      font-family: 'Inter', sans-serif;
+    }
+    html[dir="rtl"] body {
+      font-family: 'Tajawal', sans-serif;
+    }
+    .glass-card {
+      background: #121826;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+    }
+    .glow-effect {
+      box-shadow: 0 0 50px -10px rgba(255, 107, 0, 0.15);
+    }
+    .badge-gradient {
+      background: linear-gradient(135deg, rgba(255, 107, 0, 0.15) 0%, rgba(255, 107, 0, 0.02) 100%);
+    }
   </style>
 </head>
-<body>
-  <div class="container">
-    <h1>سياسة الخصوصية (Privacy Policy)</h1>
-    <p>تم إعداد هذه السياسة لتوضيح كيفية جمع واستخدام وحماية بيانات المستخدمين في التطبيق المطور والمدار من قِبل <strong>ماركتينج بروكرس للاستشارات التسويقية (Marketing Broker)</strong>.</p>
-    
-    <h2>1. بيانات الموقع الجغرافي (Location Data)</h2>
-    <p>يطلب التطبيق الوصول إلى الموقع الجغرافي الفعلي للمستخدم (GPS) لغرض أساسي ومحدد وهو:</p>
-    <ul>
-      <li>حساب وتحديد <strong>مواقيت الصلاة الدقيقة</strong> واتجاه القبلة بناءً على الإحداثيات الجغرافية الحالية للمستخدم.</li>
-      <li>تكييف مواقيت الصلاة تلقائياً حسب الدولة والمدينة المتواجد بها المستخدم.</li>
-      <li>لا يتم استخدام بيانات الموقع لتتبع المستخدم أو بيعها لأي أطراف إعلانية خارجية.</li>
-    </ul>
+<body class="min-h-screen antialiased flex flex-col justify-between">
 
-    <h2>2. دعم النطاق الدولي وتعدد الدول (Multi-Country Support)</h2>
-    <p>يدعم التطبيق المستخدمين عبر عدة دول مختلفة، ويقوم بضبط الإعدادات والخدمات والمواقيت الزمنية بما يتوافق مع النطاق الجغرافي المحدد داخل التطبيق.</p>
+  <!-- Header / Navigation Bar مع إبراز اسم التطبيق -->
+  <header class="border-b border-brand-cardBorder bg-[#0c121e]/90 backdrop-blur-md sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
+      
+      <!-- شعار واسم تطبيق صلوات -->
+      <div class="flex items-center gap-3.5">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-brand-orange to-[#ff8833] flex items-center justify-center text-white font-black text-2xl shadow-lg shadow-brand-orange/20">
+          ص
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-extrabold text-xl text-white block leading-tight tracking-tight" data-lang="app-name-nav">Salawat App</span>
+            <span class="text-xs bg-brand-orange/20 text-brand-orange px-2 py-0.5 rounded-md font-bold" data-lang="app-name-ar-badge">صلوات</span>
+          </div>
+          <span class="text-[11px] text-brand-textMuted font-medium block mt-0.5" data-lang="sub-header">By Marketing Broker for Marketing Consultancy</span>
+        </div>
+      </div>
 
-    <h2>3. تسجيل الدخول ومعلومات الحساب (Authentication & Account)</h2>
-    <p>عند إنشاء حساب وتسجيل الدخول إلى التطبيق، قد نجمع معلومات الحساب الأساسية (مثل الاسم، رقم الهاتف، أو البريد الإلكتروني) بهدف إدارة الجلسة، حفظ التفضيلات الشخصية، ومزامنة إعدادات المستخدم بأمان عبر الخوادم.</p>
+      <!-- زر التبديل بين اللغتين -->
+      <button id="langToggleBtn" onclick="toggleLanguage()" class="flex items-center gap-2.5 px-4 py-2 rounded-xl bg-brand-cardBg border border-brand-cardBorder hover:border-brand-orange/50 text-white text-sm font-semibold transition-all duration-200 hover:scale-105 shadow-sm">
+        <i class="fa-solid fa-globe text-brand-orange text-base"></i>
+        <span id="langBtnText">العربية</span>
+      </button>
 
-    <h2>4. آلية حذف الحساب والبيانات (Account & Data Deletion)</h2>
-    <div class="highlight-box">
-      <p><strong>حق المستخدم في حذف بياناته:</strong></p>
-      <p>يمكن للمستخدم حذف حسابه وبياناته بالكامل في أي وقت وبشكل مباشر من داخل التطبيق باتباع الخطوات التالية:</p>
-      <ul>
-        <li>الانتقال إلى شاشة <strong>الملف الشخصي (Profile)</strong> أو <strong>الإعدادات (Settings)</strong>.</li>
-        <li>الضغط على خيار <strong>"حذف الحساب" (Delete Account)</strong> وتأكيد الطلب.</li>
-      </ul>
-      <p>بمجرد تأكيد الحذف، يتم مسح كافة البيانات الشخصية المرتبطة بالحساب من خوادمنا وقواعد البيانات نهائياً وبشكل غير قابل للاسترجاع.</p>
+    </div>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="max-w-4xl mx-auto px-6 py-12 flex-1 w-full">
+
+    <!-- Top Badge & Title مع اسم تطبيق صلوات في البداية -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-brand-orange/30 badge-gradient text-brand-orange text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+        <i class="fa-solid fa-mosque text-xs"></i>
+        <span data-lang="badge-text">Salawat Application (صلوات)</span>
+      </div>
+      
+      <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-4 tracking-tight leading-tight" data-lang="main-title">
+        Privacy Policy
+      </h1>
+      
+      <p class="text-sm md:text-base text-brand-textMuted max-w-2xl mx-auto leading-relaxed" data-lang="main-intro">
+        This Privacy Policy explains how user data is collected, utilized, and safeguarded within the <strong class="text-brand-orange font-bold">"Salawat" (صلوات)</strong> application, developed and managed by <strong class="text-white font-semibold">Marketing Broker for Marketing Consultancy</strong>.
+      </p>
+
+      <div class="mt-4 text-xs text-gray-500 flex items-center justify-center gap-2">
+        <i class="fa-regular fa-clock"></i>
+        <span data-lang="last-updated">Last Updated: September 2026</span>
+      </div>
     </div>
 
-    <h2>5. أمان وحماية البيانات</h2>
-    <p>نلتزم بحماية بياناتك الشخصية عبر استخدام أحدث بروتوكولات التشفير (HTTPS / SSL) لضمان أمان انتقال البيانات بين هاتفك وخوادم التطبيق ومنع أي وصول غير مصرح به.</p>
+    <!-- Privacy Policy Cards Stack -->
+    <div class="space-y-6">
 
-    <div class="contact">
-      <h2>للتواصل والدعم الفني:</h2>
-      <p>البريد الإلكتروني المعتمد: <strong>marketingbrokerkw@gmail.com</strong></p>
-      <p>المؤسسة: <strong>ماركتينج بروكرس للاستشارات التسويقية - دولة الكويت</strong></p>
+      <!-- Section 1: Location Data -->
+      <div class="glass-card rounded-2xl p-6 md:p-8 hover:border-brand-orange/30 transition-all duration-300">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-brand-orange text-xl flex-shrink-0 mt-1">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-lg md:text-xl font-bold text-white mb-3" data-lang="sec1-title">
+              1. Geographic Location Data (GPS)
+            </h2>
+            <p class="text-sm md:text-[15px] text-brand-textMuted leading-relaxed mb-4" data-lang="sec1-desc">
+              The <strong>Salawat</strong> application requests access to the user's real-time geographic location (GPS) strictly for essential prayer calculations:
+            </p>
+            <ul class="space-y-2.5 text-sm md:text-[14.5px] text-gray-300">
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange text-xs mt-1 flex-shrink-0"></i>
+                <span data-lang="sec1-point1">Calculating and displaying accurate <strong>daily prayer times</strong> and determining Qibla direction based on the user's current geographic coordinates.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange text-xs mt-1 flex-shrink-0"></i>
+                <span data-lang="sec1-point2">Automatically adjusting prayer schedules based on the user's current country and city.</span>
+              </li>
+              <li class="flex items-start gap-3">
+                <i class="fa-solid fa-circle-check text-brand-orange text-xs mt-1 flex-shrink-0"></i>
+                <span data-lang="sec1-point3">Location data is processed locally on the device or used solely for prayer schedule calculations. <strong>We do not track users or sell location data</strong> to third parties or advertising networks.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Multi-Country Support -->
+      <div class="glass-card rounded-2xl p-6 md:p-8 hover:border-brand-orange/30 transition-all duration-300">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-brand-orange text-xl flex-shrink-0 mt-1">
+            <i class="fa-solid fa-earth-americas"></i>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-lg md:text-xl font-bold text-white mb-3" data-lang="sec2-title">
+              2. International & Multi-Country Support
+            </h2>
+            <p class="text-sm md:text-[15px] text-brand-textMuted leading-relaxed" data-lang="sec2-desc">
+              The <strong>Salawat</strong> app supports users across various countries globally. Timings, calculation conventions, and regional services adapt automatically according to the user's detected or selected region.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Authentication & Account Data -->
+      <div class="glass-card rounded-2xl p-6 md:p-8 hover:border-brand-orange/30 transition-all duration-300">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-brand-orange text-xl flex-shrink-0 mt-1">
+            <i class="fa-solid fa-user-shield"></i>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-lg md:text-xl font-bold text-white mb-3" data-lang="sec3-title">
+              3. Account Authentication & Information
+            </h2>
+            <p class="text-sm md:text-[15px] text-brand-textMuted leading-relaxed" data-lang="sec3-desc">
+              When registering or logging in to <strong>Salawat</strong>, basic information (such as name, phone number, or email) may be collected exclusively to manage your user session, preserve custom preferences, and synchronize settings across your devices safely.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Data & Account Deletion -->
+      <div class="bg-brand-highlightBg border border-brand-highlightBorder rounded-2xl p-6 md:p-8 glow-effect">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange text-white flex items-center justify-center text-xl flex-shrink-0 mt-1 shadow-md">
+            <i class="fa-solid fa-trash-can"></i>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-lg md:text-xl font-bold text-white mb-2" data-lang="sec4-title">
+              4. Account & Personal Data Deletion
+            </h2>
+            <p class="text-sm md:text-[15px] text-gray-200 leading-relaxed mb-4" data-lang="sec4-desc1">
+              <strong>User's Right to Erasure:</strong> You have full control over your data. You can delete your account and all associated personal data directly from inside the <strong>Salawat</strong> app at any time:
+            </p>
+            
+            <div class="bg-[#0b101b] border border-white/10 rounded-xl p-4 mb-4 text-sm text-gray-300">
+              <ol class="list-decimal list-inside space-y-1.5 font-medium">
+                <li data-lang="sec4-step1">Navigate to the <strong>Profile</strong> or <strong>Settings</strong> screen in the app.</li>
+                <li data-lang="sec4-step2">Tap the <strong>"Delete Account"</strong> option and confirm your request.</li>
+              </ol>
+            </div>
+
+            <p class="text-xs md:text-sm text-gray-300 leading-relaxed" data-lang="sec4-desc2">
+              Once deletion is confirmed, all associated personal records are immediately and irreversibly purged from our active databases and servers.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5: Security & Protection -->
+      <div class="glass-card rounded-2xl p-6 md:p-8 hover:border-brand-orange/30 transition-all duration-300">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-brand-orange/10 border border-brand-orange/20 flex items-center justify-center text-brand-orange text-xl flex-shrink-0 mt-1">
+            <i class="fa-solid fa-lock"></i>
+          </div>
+          <div class="flex-1">
+            <h2 class="text-lg md:text-xl font-bold text-white mb-3" data-lang="sec5-title">
+              5. Data Security & Encryption
+            </h2>
+            <p class="text-sm md:text-[15px] text-brand-textMuted leading-relaxed" data-lang="sec5-desc">
+              We employ strict industry-standard security protocols, including modern <strong>HTTPS / SSL</strong> encryption, ensuring all communication between the <strong>Salawat</strong> app on your device and our servers remains secure and protected.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 6: Contact Information Card -->
+      <div class="glass-card rounded-2xl p-6 md:p-8 border border-white/10 bg-gradient-to-br from-[#121826] to-[#172033]">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div>
+            <h2 class="text-lg md:text-xl font-bold text-white mb-2" data-lang="sec6-title">
+              Contact & Support
+            </h2>
+            <p class="text-sm text-brand-textMuted mb-3" data-lang="sec6-desc">
+              For any questions, support, or privacy inquiries regarding <strong>Salawat</strong>, please contact us:
+            </p>
+            <div class="text-sm text-gray-300 space-y-1">
+              <div>
+                <span class="text-brand-textMuted" data-lang="sec6-org-label">Organization:</span> 
+                <strong class="text-white" data-lang="sec6-org-name">Marketing Broker for Marketing Consultancy - State of Kuwait</strong>
+              </div>
+            </div>
+          </div>
+
+          <a href="mailto:marketingbrokerkw@gmail.com" class="inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm shadow-lg shadow-brand-orange/20 transition-all hover:scale-105 flex-shrink-0">
+            <i class="fa-solid fa-envelope"></i>
+            <span>marketingbrokerkw@gmail.com</span>
+          </a>
+        </div>
+      </div>
+
     </div>
-  </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="border-t border-brand-cardBorder bg-[#090D16] py-8 text-center text-xs text-brand-textMuted">
+    <div class="max-w-4xl mx-auto px-6">
+      <p data-lang="footer-copy">© 2026 Salawat App (صلوات) - Managed by Marketing Broker for Marketing Consultancy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Script for Language Switching -->
+  <script>
+    const translations = {
+      en: {
+        dir: 'ltr',
+        btnText: 'العربية',
+        'app-name-nav': 'Salawat App',
+        'app-name-ar-badge': 'صلوات',
+        'sub-header': 'By Marketing Broker for Marketing Consultancy',
+        'badge-text': 'Salawat Application (صلوات)',
+        'main-title': 'Privacy Policy',
+        'main-intro': 'This Privacy Policy explains how user data is collected, utilized, and safeguarded within the <strong class="text-brand-orange font-bold">"Salawat" (صلوات)</strong> application, developed and managed by <strong class="text-white font-semibold">Marketing Broker for Marketing Consultancy</strong>.',
+        'last-updated': 'Last Updated: September 2026',
+        
+        'sec1-title': '1. Geographic Location Data (GPS)',
+        'sec1-desc': 'The <strong>Salawat</strong> application requests access to the user\'s real-time geographic location (GPS) strictly for essential prayer calculations:',
+        'sec1-point1': 'Calculating and displaying accurate <strong>daily prayer times</strong> and determining Qibla direction based on the user\'s current geographic coordinates.',
+        'sec1-point2': 'Automatically adjusting prayer schedules based on the user\'s current country and city.',
+        'sec1-point3': 'Location data is processed locally on the device or used solely for prayer schedule calculations. <strong>We do not track users or sell location data</strong> to third parties or advertising networks.',
+        
+        'sec2-title': '2. International & Multi-Country Support',
+        'sec2-desc': 'The <strong>Salawat</strong> app supports users across various countries globally. Timings, calculation conventions, and regional services adapt automatically according to the user\'s detected or selected region.',
+        
+        'sec3-title': '3. Account Authentication & Information',
+        'sec3-desc': 'When registering or logging in to <strong>Salawat</strong>, basic information (such as name, phone number, or email) may be collected exclusively to manage your user session, preserve custom preferences, and synchronize settings across your devices safely.',
+        
+        'sec4-title': '4. Account & Personal Data Deletion',
+        'sec4-desc1': '<strong>User\'s Right to Erasure:</strong> You have full control over your data. You can delete your account and all associated personal data directly from inside the <strong>Salawat</strong> app at any time:',
+        'sec4-step1': 'Navigate to the <strong>Profile</strong> or <strong>Settings</strong> screen in the app.',
+        'sec4-step2': 'Tap the <strong>"Delete Account"</strong> option and confirm your request.',
+        'sec4-desc2': 'Once deletion is confirmed, all associated personal records are immediately and irreversibly purged from our active databases and servers.',
+        
+        'sec5-title': '5. Data Security & Encryption',
+        'sec5-desc': 'We employ strict industry-standard security protocols, including modern <strong>HTTPS / SSL</strong> encryption, ensuring all communication between the <strong>Salawat</strong> app on your device and our servers remains secure and protected.',
+        
+        'sec6-title': 'Contact & Support',
+        'sec6-desc': 'For any questions, support, or privacy inquiries regarding <strong>Salawat</strong>, please contact us:',
+        'sec6-org-label': 'Organization:',
+        'sec6-org-name': 'Marketing Broker for Marketing Consultancy - State of Kuwait',
+        
+        'footer-copy': '© 2026 Salawat App (صلوات) - Managed by Marketing Broker for Marketing Consultancy. All rights reserved.'
+      },
+      ar: {
+        dir: 'rtl',
+        btnText: 'English',
+        'app-name-nav': 'تطبيق صلوات',
+        'app-name-ar-badge': 'Salawat',
+        'sub-header': 'تطوير وإدارة ماركتينج بروكرس للاستشارات التسويقية',
+        'badge-text': 'تطبيق صلوات (Salawat)',
+        'main-title': 'سياسة الخصوصية',
+        'main-intro': 'تم إعداد هذه السياسة لتوضيح كيفية جمع واستخدام وحماية بيانات المستخدمين في تطبيق <strong class="text-brand-orange font-bold">"صلوات" (Salawat)</strong>، المطور والمدار من قِبل <strong class="text-white font-semibold">ماركتينج بروكرس للاستشارات التسويقية (Marketing Broker)</strong>.',
+        'last-updated': 'آخر تحديث: سبتمبر 2026',
+        
+        'sec1-title': '1. بيانات الموقع الجغرافي (Location Data)',
+        'sec1-desc': 'يطلب تطبيق <strong>صلوات</strong> الوصول إلى الموقع الجغرافي الفعلي للمستخدم (GPS) لغرض أساسي ومحدد وهو:',
+        'sec1-point1': 'حساب وتحديد <strong>مواقيت الصلاة الدقيقة</strong> واتجاه القبلة بناءً على الإحداثيات الجغرافية الحالية للمستخدم.',
+        'sec1-point2': 'تكييف وتعديل مواقيت الصلاة تلقائياً حسب الدولة والمدينة المتواجد بها المستخدم.',
+        'sec1-point3': 'يتم استخدام بيانات الموقع محلياً داخل التطبيق، <strong>ولا يتم استخدامها لتتبع المستخدم أو بيعها لأي أطراف إعلانية خارجية</strong>.',
+        
+        'sec2-title': '2. دعم النطاق الدولي وتعدد الدول (Multi-Country Support)',
+        'sec2-desc': 'يدعم تطبيق <strong>صلوات</strong> المستخدمين عبر عدة دول مختلفة، ويقوم بضبط الإعدادات والخدمات والمواقيت الزمنية وطرق الحساب بما يتوافق مع النطاق الجغرافي المحدد داخل التطبيق.',
+        
+        'sec3-title': '3. تسجيل الدخول ومعلومات الحساب (Authentication & Account)',
+        'sec3-desc': 'عند إنشاء حساب وتسجيل الدخول إلى تطبيق <strong>صلوات</strong>، قد نجمع معلومات الحساب الأساسية (مثل الاسم، رقم الهاتف، أو البريد الإلكتروني) بهدف إدارة الجلسة، حفظ التفضيلات الشخصية، ومزامنة إعدادات المستخدم بأمان عبر الخوادم.',
+        
+        'sec4-title': '4. آلية حذف الحساب والبيانات (Account & Data Deletion)',
+        'sec4-desc1': '<strong>حق المستخدم في حذف بياناته:</strong> يمتلك المستخدم كامل الحق في حذف حسابه وكافة بياناته الشخصية في أي وقت وبشكل مباشر من داخل تطبيق <strong>صلوات</strong> باتباع الخطوات التالية:',
+        'sec4-step1': 'الانتقال إلى شاشة <strong>الملف الشخصي (Profile)</strong> أو <strong>الإعدادات (Settings)</strong>.',
+        'sec4-step2': 'الضغط على خيار <strong>"حذف الحساب" (Delete Account)</strong> وتأكيد الطلب.',
+        'sec4-desc2': 'بمجرد تأكيد طلب الحذف، يتم مسح وإزالة كافة البيانات الشخصية المرتبطة بالحساب من خوادمنا وقواعد البيانات نهائياً وبشكل غير قابل للاسترجاع.',
+        
+        'sec5-title': '5. أمان وحماية البيانات (Data Security)',
+        'sec5-desc': 'نلتزم بحماية بياناتك الشخصية في تطبيق <strong>صلوات</strong> عبر استخدام أحدث بروتوكولات الأمان والتشفير (HTTPS / SSL) لضمان أمان انتقال البيانات بين هاتفك وخوادم التطبيق ومنع أي وصول غير مصرح به.',
+        
+        'sec6-title': 'للتواصل والدعم الفني:',
+        'sec6-desc': 'في حال كان لديك أي استفسار أو طلب متعلق بسياسة خصوصية تطبيق <strong>صلوات</strong>، يرجى التواصل معنا عبر:',
+        'sec6-org-label': 'المؤسسة:',
+        'sec6-org-name': 'ماركتينج بروكرس للاستشارات التسويقية - دولة الكويت',
+        
+        'footer-copy': '© 2026 تطبيق صلوات (Salawat) - مدار من قِبل ماركتينج بروكرس للاستشارات التسويقية. جميع الحقوق محفوظة.'
+      }
+    };
+
+    let currentLang = 'en';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'ar' : 'en';
+      applyLanguage(currentLang);
+    }
+
+    function applyLanguage(lang) {
+      const data = translations[lang];
+      
+      document.documentElement.lang = lang;
+      document.documentElement.dir = data.dir;
+      
+      document.getElementById('langBtnText').textContent = data.btnText;
+      
+      document.querySelectorAll('[data-lang]').forEach(element => {
+        const key = element.getAttribute('data-lang');
+        if (data[key]) {
+          element.innerHTML = data[key];
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
